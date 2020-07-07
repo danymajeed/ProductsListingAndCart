@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CartProduct from "./cartProduct";
+import CartSummary from "./cartSummary";
 import { connect } from "react-redux";
 
 class ShoppingCart extends Component {
@@ -8,14 +9,25 @@ class ShoppingCart extends Component {
     if (itemsCount !== 0) {
       return (
         <div>
-          <div className="text-center my-4">
+          <div className="text-center my-4 page-header">
             <h4>{itemsCount} Item(s) In Cart</h4>
           </div>
-          {products.map((p) => {
-            return <CartProduct key={p.id} product={p} />;
-          })}
-          <div className="card text-center p-3">
-            <h4>Total: Rs. {total}</h4>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-4  mb-4">
+                <CartSummary total={total}></CartSummary>
+              </div>
+
+              <div className="col-md-8">
+                {products.map((p) => {
+                  return (
+                    <div className="mb-3" key={p.id}>
+                      <CartProduct product={p} />;
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       );

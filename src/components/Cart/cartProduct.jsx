@@ -5,42 +5,46 @@ import DeleteItemFromCart from "./deleteItemFromCart";
 
 const CartProduct = ({ product }) => {
   return (
-    <div className="card my-3">
-      <div className="card-body">
-        <div className="row">
-          <h5 className="col-sm-10 ">{product.name}</h5>
-
-          <RemoveFromCart
-            content="-"
-            styling="quantity-left-minus btn btn-danger"
-            id={product.id}
-          ></RemoveFromCart>
+    <div className="card card-body">
+      <div className="d-flex flex-column align-items-center flex-sm-row justify-content-between">
+        <h5 className="pb-3 ">{product.name}</h5>
+        <div className="input-group " style={{ width: 150 }}>
+          <div className="input-group-prepend">
+            <RemoveFromCart
+              content="-"
+              styling=" btn btn-outline-danger"
+              id={product.id}
+            ></RemoveFromCart>
+          </div>
           <input
             readOnly
-            className="text-center form-control col-sm-1 mx-2"
+            className="text-center form-control  "
             type="text"
             value={product.quantity}
           ></input>
-          <AddToCart
-            content="+"
-            styling="quantity-left-minus btn btn-success"
-            product={product}
-          ></AddToCart>
+          <div className="input-group-append">
+            <AddToCart
+              content="+"
+              styling=" btn btn-outline-success"
+              product={product}
+            ></AddToCart>
+          </div>
         </div>
-        <h6 className="card-text mt-2">
-          Rs. {product.price} x {product.quantity}
-        </h6>
-        <div className="row">
-          <h6 className="card-text col-sm-10 mt-3">
-            Subtotal: {product.price * product.quantity}
-          </h6>
+      </div>
 
-          <DeleteItemFromCart
-            id={product.id}
-            content="Remove"
-            styling=" col-sm-2 btn btn-danger"
-          ></DeleteItemFromCart>
-        </div>
+      <h6 className="card-text pt-2 d-flex justify-content-center justify-content-sm-start my-3">
+        Rs. {product.price} x {product.quantity}
+      </h6>
+      <div className="d-flex justify-content-between">
+        <h6 className="card-text align-self-center">
+          Subtotal: {product.price * product.quantity}
+        </h6>
+
+        <DeleteItemFromCart
+          id={product.id}
+          content="Remove"
+          styling="  btn btn-danger"
+        ></DeleteItemFromCart>
       </div>
     </div>
   );

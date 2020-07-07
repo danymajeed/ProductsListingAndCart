@@ -6,10 +6,10 @@ class Navbar extends Component {
   render() {
     const { itemsCount } = this.props;
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
         <span className="navbar-brand mb-0 h1">My Store</span>
         <div>
-          <ul className="navbar-nav mr-auto">
+          <ul className="navbar-nav ">
             <li className="nav-item active">
               <Link to="/" className="nav-link">
                 Home
